@@ -2,6 +2,9 @@ import telebot
 import getpass
 import platform
 from pytube import YouTube
+import cv2
+from PIL import Image
+import numpy as np
 
 username = getpass.getuser()
 my_platform = platform.system()
@@ -29,6 +32,35 @@ def get_text_messages(message):
             filename = yt.title
             yt = yt.streams.get_lowest_resolution()
             yt.download(path, filename=filename + '.mp4')
+            
+            t1 = int(split_space[1].split(':')[0]) * 60 + int(split_space[1].split(':')[1])
+            t2 = int(split_space[2].split(':')[0]) * 60 + int(split_space[2].split(':')[1])
+
+            cap = cv2.VideoCapture(path + filename + '.mp4')
+
+            i = 0
+            frames = []
+
+            while i <= t2 * 30:
+                ret, bgr_frame = cap.read()
+                if i >= t1 * 30:
+                    if color == 1:
+                        frame = cv2.cvtColor(bgr_frame, cv2.COLOR_BGR2RGB)
+                    else:
+                        frame = cv2.cvtColor(bgr_frame, cv2.COLOR_BGR2GRAY)
+                    frames.append(Image.fromarray(frame))
+                i += 1
+
+            cap.release()
+
+            frames[0].save(
+                path + filename + '.gif',
+                save_all=True,
+                append_images=frames[1::cut_frames],
+                optimize=True,
+                duration=33 * cut_frames,
+                loop=0
+            )
         except Exception:
             pass
     else:
