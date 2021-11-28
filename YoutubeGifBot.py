@@ -1,4 +1,14 @@
 import telebot
+import getpass
+import platform
+
+username = getpass.getuser()
+my_platform = platform.system()
+
+if my_platform == 'Windows':
+    path = 'C:\\Users\\' + username + '\\Downloads\\'
+else:
+    path = '/home/' + username + '/Загрузки/'
 
 bot = telebot.TeleBot('2125057771:AAHzoKqLjbtho2kQuxy8evJV07q4dvkB3Eg')
 
