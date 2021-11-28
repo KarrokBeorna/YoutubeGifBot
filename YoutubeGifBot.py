@@ -61,8 +61,20 @@ def get_text_messages(message):
                 duration=33 * cut_frames,
                 loop=0
             )
+            
+            with open(path + filename + '.gif', 'rb') as f1:
+                bot.send_animation(message.from_user.id, f1)
+
+            time.sleep(2)
+            os.remove(path + filename + '.mp4')
+            os.remove(path + filename + '.gif')
         except Exception:
-            pass
+            bot.send_message(message.from_user.id, "Invalid input")
+            try:
+                os.remove(path + filename + '.mp4')
+                os.remove(path + filename + '.gif')
+            except Exception:
+                pass
     else:
         bot.send_message(message.from_user.id, 'Напиши \'/help\'')
 
