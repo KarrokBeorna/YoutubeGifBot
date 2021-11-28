@@ -5,6 +5,8 @@ from pytube import YouTube
 import cv2
 from PIL import Image
 import numpy as np
+import os
+import time
 
 username = getpass.getuser()
 my_platform = platform.system()
@@ -32,7 +34,7 @@ def get_text_messages(message):
             filename = yt.title
             yt = yt.streams.get_lowest_resolution()
             yt.download(path, filename=filename + '.mp4')
-            
+
             t1 = int(split_space[1].split(':')[0]) * 60 + int(split_space[1].split(':')[1])
             t2 = int(split_space[2].split(':')[0]) * 60 + int(split_space[2].split(':')[1])
 
@@ -61,7 +63,7 @@ def get_text_messages(message):
                 duration=33 * cut_frames,
                 loop=0
             )
-            
+
             with open(path + filename + '.gif', 'rb') as f1:
                 bot.send_animation(message.from_user.id, f1)
 
