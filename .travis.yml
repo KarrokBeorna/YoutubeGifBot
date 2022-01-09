@@ -1,0 +1,7 @@
+language: python
+python:
+  - 3.9
+install:
+  - pip install pyTelegramBotAPI numpy Pillow opencv-python-headless pytube
+script:
+  - python test.py
