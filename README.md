@@ -2,7 +2,7 @@
 
 ## CI
 
-main - [![Build Status](https://app.travis-ci.com/KarrokBeorna/YoutubeGifBot.svg?branch=main)](https://app.travis-ci.com/github/KarrokBeorna/YoutubeGifBot) 
+main - [![Build Status](https://app.travis-ci.com/KarrokBeorna/YoutubeGifBot.svg?branch=main)](https://app.travis-ci.com/github/KarrokBeorna/YoutubeGifBot)  
 develop - [![Build Status](https://app.travis-ci.com/KarrokBeorna/YoutubeGifBot.svg?branch=develop)](https://app.travis-ci.com/github/KarrokBeorna/YoutubeGifBot) 
 
 YouTube Gif Bot is a bot that sends a gif to the Telegram chat, following a link from YouTube and two timestamps in the 'link mm:ss mm:ss' format.
